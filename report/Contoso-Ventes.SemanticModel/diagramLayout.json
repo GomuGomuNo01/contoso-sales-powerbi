@@ -1,94 +1,94 @@
 {
-    "selectedDiagram":  "All tables",
-    "defaultDiagram":  "All tables",
-    "version":  "1.1.0",
-    "diagrams":  [
-                     {
-                         "name":  "All tables",
-                         "showExtraHeaderInfo":  false,
-                         "pinKeyFieldsToTop":  false,
-                         "scrollPosition":  {
-                                                "y":  0,
-                                                "x":  0
-                                            },
-                         "nodes":  [
-                                       {
-                                           "nodeIndex":  "Calendrier",
-                                           "zIndex":  0,
-                                           "location":  {
-                                                            "y":  0,
-                                                            "x":  0
-                                                        },
-                                           "size":  {
-                                                        "height":  400,
-                                                        "width":  250
-                                                    }
-                                       },
-                                       {
-                                           "nodeIndex":  "Clients",
-                                           "zIndex":  1,
-                                           "location":  {
-                                                            "y":  450,
-                                                            "x":  0
-                                                        },
-                                           "size":  {
-                                                        "height":  250,
-                                                        "width":  250
-                                                    }
-                                       },
-                                       {
-                                           "nodeIndex":  "Ventes",
-                                           "zIndex":  2,
-                                           "location":  {
-                                                            "y":  170,
-                                                            "x":  380
-                                                        },
-                                           "size":  {
-                                                        "height":  400,
-                                                        "width":  270
-                                                    }
-                                       },
-                                       {
-                                           "nodeIndex":  "Produits",
-                                           "zIndex":  3,
-                                           "location":  {
-                                                            "y":  0,
-                                                            "x":  780
-                                                        },
-                                           "size":  {
-                                                        "height":  220,
-                                                        "width":  250
-                                                    }
-                                       },
-                                       {
-                                           "nodeIndex":  "Magasins",
-                                           "zIndex":  4,
-                                           "location":  {
-                                                            "y":  270,
-                                                            "x":  780
-                                                        },
-                                           "size":  {
-                                                        "height":  340,
-                                                        "width":  250
-                                                    }
-                                       },
-                                       {
-                                           "nodeIndex":  "Mesures",
-                                           "zIndex":  5,
-                                           "location":  {
-                                                            "y":  0,
-                                                            "x":  1110
-                                                        },
-                                           "size":  {
-                                                        "height":  700,
-                                                        "width":  280
-                                                    }
-                                       }
-                                   ],
-                         "ordinal":  0,
-                         "zoomValue":  100,
-                         "tablesLocked":  false,
-                         "hideKeyFieldsWhenCollapsed":  false
-                     }
-                 ]
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Calendrier",
+          "size": {
+            "height": 400,
+            "width": 250
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 450
+          },
+          "nodeIndex": "Clients",
+          "size": {
+            "height": 250,
+            "width": 250
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 380,
+            "y": 170
+          },
+          "nodeIndex": "Ventes",
+          "size": {
+            "height": 400,
+            "width": 270
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 780,
+            "y": 0
+          },
+          "nodeIndex": "Produits",
+          "size": {
+            "height": 220,
+            "width": 250
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 780,
+            "y": 270
+          },
+          "nodeIndex": "Magasins",
+          "size": {
+            "height": 340,
+            "width": 250
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1110,
+            "y": 0
+          },
+          "nodeIndex": "Mesures",
+          "size": {
+            "height": 700,
+            "width": 280
+          },
+          "zIndex": 5
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 89.192590520569482,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
 }

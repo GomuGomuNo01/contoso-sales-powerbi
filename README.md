@@ -14,24 +14,84 @@ Projet d'analyse de données de bout en bout : à partir de fichiers CSV bruts, 
 
 ## Sommaire
 
-1. [Contexte et objectifs](#1-contexte-et-objectifs)
-2. [Problématiques traitées](#2-problématiques-traitées)
-3. [Données utilisées](#3-données-utilisées)
-4. [Outils et technologies](#4-outils-et-technologies)
-5. [Méthodologie](#5-méthodologie)
-6. [Étapes de réalisation](#6-étapes-de-réalisation)
-7. [Le rapport Power BI](#7-le-rapport-power-bi)
-8. [Analyses et résultats](#8-analyses-et-résultats)
-9. [Recommandations](#9-recommandations)
-10. [Principaux enseignements](#10-principaux-enseignements)
-11. [Structure du projet](#11-structure-du-projet)
-12. [Reproduire le projet](#12-reproduire-le-projet)
-13. [Limites et pistes d'amélioration](#13-limites-et-pistes-damélioration)
-14. [Crédits](#14-crédits)
+1. [Le projet en bref (pour les recruteurs)](#1-le-projet-en-bref-pour-les-recruteurs)
+2. [Les conclusions de l'analyse](#2-les-conclusions-de-lanalyse)
+3. [Contexte et objectifs](#3-contexte-et-objectifs)
+4. [Problématiques traitées](#4-problématiques-traitées)
+5. [Données utilisées](#5-données-utilisées)
+6. [Outils et technologies](#6-outils-et-technologies)
+7. [Méthodologie](#7-méthodologie)
+8. [Étapes de réalisation](#8-étapes-de-réalisation)
+9. [Le rapport Power BI](#9-le-rapport-power-bi)
+10. [Analyses et résultats détaillés](#10-analyses-et-résultats-détaillés)
+11. [Recommandations](#11-recommandations)
+12. [Principaux enseignements](#12-principaux-enseignements)
+13. [Structure du projet](#13-structure-du-projet)
+14. [Reproduire le projet](#14-reproduire-le-projet)
+15. [Limites et pistes d'amélioration](#15-limites-et-pistes-damélioration)
+16. [Crédits](#16-crédits)
 
 ---
 
-## 1. Contexte et objectifs
+## 1. Le projet en bref (pour les recruteurs)
+
+> **En une phrase :** j'ai joué le rôle d'un Data Analyst chargé d'expliquer à une direction commerciale pourquoi ses ventes baissent, et de l'aider à décider quoi faire.
+
+### La situation
+
+Une entreprise de distribution voit son chiffre d'affaires reculer de 33 % en deux ans après une année record. La direction ne sait pas d'où vient la baisse : des magasins, du site internet, de certains pays, de certains produits, des clients ? Elle a besoin de réponses claires et d'un outil pour suivre la situation.
+
+### Ce que j'ai fait
+
+| Étape | En pratique |
+|---|---|
+| **Comprendre le besoin** | Identification des personnes concernées (direction, e-commerce, marketing, responsables produits) et formulation de 6 questions précises auxquelles l'analyse doit répondre |
+| **Fiabiliser les données** | Contrôle de près de 225 000 lignes de ventes, détection et correction de pièges qui auraient faussé les chiffres sans alerte visible |
+| **Construire un tableau de bord** | Un rapport de 4 pages, lisible en quelques minutes, qui va de la vue d'ensemble au détail par pays, produit et client |
+| **Vérifier chaque résultat** | Recalcul indépendant de tous les indicateurs clés pour garantir que les chiffres présentés sont justes |
+| **Conclure et recommander** | 6 constats appuyés sur des chiffres et 6 recommandations classées par priorité, avec l'indicateur qui permettra d'en suivre l'effet |
+| **Documenter** | Cahier des charges, dictionnaire des données et présentation complète, pour qu'une autre personne puisse reprendre le travail |
+
+### Ce que ce projet démontre
+
+- **Sens métier** : partir d'un problème d'entreprise et d'utilisateurs réels, plutôt que de produire des graphiques pour eux-mêmes.
+- **Rigueur** : les chiffres sont contrôlés deux fois, les hypothèses et les limites sont écrites noir sur blanc.
+- **Esprit critique** : distinguer les vraies causes des fausses pistes (les remises, par exemple, ne sont pas responsables de la baisse).
+- **Capacité de synthèse** : transformer des centaines de milliers de lignes en quelques messages clés compréhensibles par un public non technique.
+- **Orientation décision** : chaque recommandation est reliée à un constat chiffré et à un indicateur de suivi.
+- **Autonomie et organisation** : projet mené de bout en bout, du cadrage à la restitution, avec un historique de travail découpé par étapes.
+
+### Pour découvrir le travail en 2 minutes
+
+1. Lire [les conclusions de l'analyse](#2-les-conclusions-de-lanalyse) juste en dessous.
+2. Parcourir [les captures du rapport](#9-le-rapport-power-bi).
+3. Consulter [les recommandations](#11-recommandations).
+
+## 2. Les conclusions de l'analyse
+
+**Le constat.** Le chiffre d'affaires net est passé de **43,8 M$ en 2023 à 29,3 M$ en 2025 (-33 %)**. Pourtant, la **rentabilité n'a pas bougé** : la marge reste autour de 56 % et les remises autour de 6 % du chiffre d'affaires. Le problème ne vient donc ni des prix cassés ni des coûts, mais du **volume et de la valeur des ventes**.
+
+**Les trois causes principales**
+
+1. **Contoso recrute deux fois moins de nouveaux clients** : 9 257 en 2023, 4 865 en 2025 (-47 %). Les clients fidèles, eux, sont plus nombreux (+23 %), mais ne compensent pas.
+2. **Les clients dépensent moins par commande** : le panier moyen recule de 19 % (2 289 $ à 1 864 $). Ils achètent autant d'articles, mais des **produits moins chers**.
+3. **La baisse est très concentrée** : les **États-Unis** expliquent près de **80 %** de la perte de chiffre d'affaires, et les **ordinateurs** près de la **moitié**.
+
+**Les signaux encourageants**
+
+- La **fidélité progresse** : de plus en plus de clients reviennent acheter.
+- L'**Allemagne (+18 %)**, les **Pays-Bas (+16 %)** et l'**Italie (+8 %)** repartent à la hausse en 2025.
+- La **livraison en ligne** est rapide et stable (3 jours en moyenne, contre près de 9 en 2016) : elle n'est pas en cause.
+
+**Les priorités recommandées**
+
+1. Lancer un **diagnostic du marché américain**, qui concentre l'essentiel de la baisse.
+2. **Relancer l'acquisition de nouveaux clients**, en priorité en ligne.
+3. **Revaloriser le panier moyen** (offres groupées, accessoires, gammes supérieures).
+
+Le détail chiffré se trouve dans les sections [Analyses et résultats détaillés](#10-analyses-et-résultats-détaillés) et [Recommandations](#11-recommandations).
+
+## 3. Contexte et objectifs
 
 **Contoso** est un distributeur (fictif) de produits électroniques et d'électroménager. Il vend dans des magasins physiques implantés dans 8 pays et via une boutique en ligne.
 
@@ -43,7 +103,7 @@ Projet d'analyse de données de bout en bout : à partir de fichiers CSV bruts, 
 
 Le cadrage complet (parties prenantes, KPIs, périmètre, hypothèses) est détaillé dans le [cahier des charges](docs/cahier-des-charges.md).
 
-## 2. Problématiques traitées
+## 4. Problématiques traitées
 
 | # | Question métier | Partie prenante |
 |---|---|---|
@@ -56,7 +116,7 @@ Le cadrage complet (parties prenantes, KPIs, périmètre, hypothèses) est déta
 
 **Indicateur principal (North Star) : le CA net**, suivi avec le **taux de marge** comme garde-fou.
 
-## 3. Données utilisées
+## 5. Données utilisées
 
 | Élément | Détail |
 |---|---|
@@ -68,7 +128,7 @@ Le cadrage complet (parties prenantes, KPIs, périmètre, hypothèses) est déta
 
 Le détail des colonnes conservées, écartées et transformées figure dans le [dictionnaire de données](docs/dictionnaire-de-donnees.md). Les fichiers bruts ne sont pas versionnés : voir [data/README.md](data/README.md) pour les télécharger.
 
-## 4. Outils et technologies
+## 6. Outils et technologies
 
 | Outil | Utilisation dans le projet |
 |---|---|
@@ -80,7 +140,7 @@ Le détail des colonnes conservées, écartées et transformées figure dans le 
 | **Git / GitHub** | Versionnage par étape sur une branche `dev` |
 | **Markdown** | Cahier des charges, dictionnaire de données, README |
 
-## 5. Méthodologie
+## 7. Méthodologie
 
 ```mermaid
 flowchart LR
@@ -99,9 +159,9 @@ Trois principes ont guidé le travail :
 2. **Ne rien promettre que les données ne permettent pas** : le cadrage a été validé après exploration (absence de données de retours, de budget ou de trafic, par exemple).
 3. **Vérifier chaque chiffre** : les KPIs du rapport sont recalculés indépendamment en Python avant d'être interprétés.
 
-## 6. Étapes de réalisation
+## 8. Étapes de réalisation
 
-### 6.1 Préparation des données (Power Query)
+### 8.1 Préparation des données (Power Query)
 
 - **Paramètre `CheminDonnees`** : toutes les requêtes lisent leurs fichiers à partir d'un seul paramètre, pour que le projet fonctionne sur n'importe quel poste.
 - **Import fiable** : langue d'import réglée sur *Anglais (États-Unis)* (sinon `375.976` n'est pas reconnu comme un nombre) et encodage **UTF-8** (sinon `Café` devient `CafÃ©`).
@@ -109,7 +169,7 @@ Trois principes ont guidé le travail :
 - **Nettoyage** : conservation des seules colonnes utiles, suppression des données personnelles des clients (principe de minimisation), renommage en français, traduction des codes (`Closed` en `Fermé`, `male` en `Homme`).
 - **Colonnes dérivées** : `Délai de livraison (jours)`, `Canal` (en ligne ou magasin physique) et un libellé `Magasin` unique (plusieurs magasins restructurés partageaient le même nom de région).
 
-### 6.2 Modélisation (schéma en étoile)
+### 8.2 Modélisation (schéma en étoile)
 
 ![Modèle de données](docs/captures/05-modele-de-donnees.png)
 
@@ -118,7 +178,7 @@ Trois principes ont guidé le travail :
 - **Table Calendrier créée en DAX** et marquée comme table de dates, avec des libellés en français. L'option « Date/heure automatique » est désactivée pour éviter les tables de dates cachées.
 - Colonnes techniques (clés, prix unitaires) masquées : l'utilisateur ne manipule que des dimensions lisibles et des mesures.
 
-### 6.3 Mesures DAX
+### 8.3 Mesures DAX
 
 30 mesures rangées en 5 dossiers. Quelques exemples :
 
@@ -145,17 +205,17 @@ RETURN
 
 Le code complet est lisible directement dans [`Mesures.tmdl`](report/Contoso-Ventes.SemanticModel/definition/tables/Mesures.tmdl), grâce au format PBIP.
 
-### 6.4 Conception du rapport
+### 8.4 Conception du rapport
 
 - 4 pages organisées du général au détail : **Synthèse**, **Canaux et pays**, **Produits et rentabilité**, **Clients**.
 - Un filtre **Année analysée** synchronisé sur toutes les pages (2025 par défaut) pilote les KPIs, tandis que les **courbes de tendance ignorent ce filtre** et montrent toujours 2016 à 2025 (interactions entre visuels désactivées).
 - Thème personnalisé (couleurs, cartes à coins arrondis, fond clair) pour une lecture homogène.
 
-### 6.5 Contrôle qualité
+### 8.5 Contrôle qualité
 
 Le script [`scripts/verifier_kpis.py`](scripts/verifier_kpis.py) vérifie l'intégrité des données (aucun doublon, aucune vente rattachée à un produit, magasin ou client inexistant, aucun prix net supérieur au prix unitaire) puis recalcule les KPIs par année. Les valeurs affichées dans Power BI (KPIs 2025, séries annuelles de commandes, de clients et de CA) ont été comparées à ce recalcul et concordent.
 
-## 7. Le rapport Power BI
+## 9. Le rapport Power BI
 
 | Page | Contenu |
 |---|---|
@@ -164,7 +224,7 @@ Le script [`scripts/verifier_kpis.py`](scripts/verifier_kpis.py) vérifie l'int�
 | ![Produits et rentabilité](docs/captures/03-produits-et-rentabilite.png) | **Produits et rentabilité** : CA et marge par catégorie, taux de marge et de remise dans le temps, sous-catégories |
 | ![Clients](docs/captures/04-clients.png) | **Clients** : nouveaux clients et clients fidèles, commandes et panier moyen, prix moyen par unité, clients par pays |
 
-## 8. Analyses et résultats
+## 10. Analyses et résultats détaillés
 
 ### Vue d'ensemble (2016 à 2025)
 
@@ -217,7 +277,7 @@ Les catégories **Audio (+17 %)** et **Jeux et jouets** sont stables ou en hauss
 La part du CA réalisée en ligne passe de **15 % en 2016 à 62 % en 2024**, puis 55 % en 2025. Mais depuis 2023, **les deux canaux reculent** : -32 % en ligne, -35 % en magasin.
 Le **délai moyen de livraison** des commandes en ligne est passé de **8,8 jours (2016) à 3,0 jours (2023)** et reste stable depuis : la baisse des ventes en ligne **n'est pas liée à une dégradation de la livraison**.
 
-## 9. Recommandations
+## 11. Recommandations
 
 | Priorité | Recommandation | Constat | Indicateur de suivi |
 |---|---|---|---|
@@ -228,9 +288,9 @@ Le **délai moyen de livraison** des commandes en ligne est passé de **8,8 jour
 | 5 | **Capitaliser sur la fidélité** avec un programme dédié, puisque la base de clients fidèles progresse | 3 | Clients fidèles |
 | 6 | **Garder la discipline sur les remises** : tester des promotions ciblées plutôt que générales, et mesurer leur effet | 1 | Taux de remise, taux de marge |
 
-Ces recommandations restent à confirmer avec des données absentes du jeu actuel (voir limites).
+Ces recommandations restent à confirmer avec des données absentes du jeu actuel (voir la section Limites).
 
-## 10. Principaux enseignements
+## 12. Principaux enseignements
 
 **Sur la démarche d'analyse**
 - Le **cadrage métier** oriente tout le reste : une question précise produit un graphique utile.
@@ -246,7 +306,7 @@ Ces recommandations restent à confirmer avec des données absentes du jeu actue
 - **Colonne calculée ou mesure ?** Un calcul ligne par ligne qui ne dépend pas des filtres (délai de livraison) va dans Power Query ; un agrégat qui dépend des filtres (CA, panier moyen) devient une mesure DAX.
 - Le **format PBIP** rend un projet Power BI lisible, vérifiable et versionnable comme du code.
 
-## 11. Structure du projet
+## 13. Structure du projet
 
 ```
 contoso-sales-powerbi/
@@ -266,7 +326,7 @@ contoso-sales-powerbi/
     └── verifier_kpis.py              Contrôles qualité et recalcul des KPIs en Python
 ```
 
-## 12. Reproduire le projet
+## 14. Reproduire le projet
 
 **Prérequis :** Windows et [Power BI Desktop](https://aka.ms/pbidesktopstore) (gratuit).
 
@@ -283,7 +343,7 @@ pip install pandas
 python scripts/verifier_kpis.py
 ```
 
-## 13. Limites et pistes d'amélioration
+## 15. Limites et pistes d'amélioration
 
 **Limites**
 - **Données fictives** générées par un outil : les constats illustrent une démarche, pas la situation d'une entreprise réelle.
@@ -300,7 +360,7 @@ python scripts/verifier_kpis.py
 - Approfondir l'analyse client : **cohortes d'acquisition**, **segmentation RFM**, rétention.
 - Intégrer un **budget 2026** et une **prévision** pour suivre les écarts.
 
-## 14. Crédits
+## 16. Crédits
 
 - Données : [SQLBI, Contoso Data Generator V2](https://github.com/sql-bi/Contoso-Data-Generator-V2-Data) (licence MIT).
 - Licence du projet : [MIT](LICENSE).

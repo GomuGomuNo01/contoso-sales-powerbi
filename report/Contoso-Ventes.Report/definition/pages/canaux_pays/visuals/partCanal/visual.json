@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "partCanal",
   "position": {
     "x": 24,
@@ -27,25 +27,8 @@
                 }
               },
               "queryRef": "Calendrier.Année",
-              "nativeQueryRef": "Année"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Mesures"
-                    }
-                  },
-                  "Property": "CA net"
-                }
-              },
-              "queryRef": "Mesures.CA net",
-              "nativeQueryRef": "CA net"
+              "nativeQueryRef": "Année",
+              "active": true
             }
           ]
         },
@@ -66,6 +49,24 @@
               "nativeQueryRef": "Canal"
             }
           ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Mesures"
+                    }
+                  },
+                  "Property": "CA net"
+                }
+              },
+              "queryRef": "Mesures.CA net",
+              "nativeQueryRef": "CA net"
+            }
+          ]
         }
       },
       "sortDefinition": {
@@ -83,8 +84,7 @@
             },
             "direction": "Ascending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {

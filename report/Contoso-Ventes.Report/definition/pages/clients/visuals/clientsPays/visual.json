@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "clientsPays",
   "position": {
     "x": 648,
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Clients.Pays du client",
-              "nativeQueryRef": "Pays du client"
+              "nativeQueryRef": "Pays du client",
+              "active": true
             }
           ]
         },
@@ -65,8 +66,7 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": false
+        ]
       }
     },
     "objects": {
