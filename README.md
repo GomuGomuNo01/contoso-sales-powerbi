@@ -14,7 +14,7 @@ Projet d'analyse de données de bout en bout : à partir de fichiers CSV bruts, 
 
 ## Sommaire
 
-1. [Le projet en bref (pour les recruteurs)](#1-le-projet-en-bref-pour-les-recruteurs)
+1. [Le projet en bref](#1-le-projet-en-bref)
 2. [Les conclusions de l'analyse](#2-les-conclusions-de-lanalyse)
 3. [Contexte et objectifs](#3-contexte-et-objectifs)
 4. [Problématiques traitées](#4-problématiques-traitées)
@@ -33,7 +33,7 @@ Projet d'analyse de données de bout en bout : à partir de fichiers CSV bruts, 
 
 ---
 
-## 1. Le projet en bref (pour les recruteurs)
+## 1. Le projet en bref
 
 > **En une phrase :** j'ai joué le rôle d'un Data Analyst chargé d'expliquer à une direction commerciale pourquoi ses ventes baissent, et de l'aider à décider quoi faire.
 
