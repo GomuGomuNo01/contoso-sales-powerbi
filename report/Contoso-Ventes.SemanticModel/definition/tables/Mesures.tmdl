@@ -1,0 +1,242 @@
+table Mesures
+	lineageTag: b7e3da4f-43f5-4e4c-b903-c1a561825014
+
+	/// Chiffre d'affaires au prix de vente, avant remise.
+	measure 'CA brut' = SUMX ( Ventes, Ventes[Quantité] * Ventes[Prix unitaire] )
+		formatString: \$#,0
+		displayFolder: 1. Chiffre d'affaires
+		lineageTag: 3f5209d9-4636-4fae-875b-8d2918d337b1
+
+	/// Chiffre d'affaires facturé, après remise. Indicateur principal (North Star).
+	measure 'CA net' = SUMX ( Ventes, Ventes[Quantité] * Ventes[Prix net] )
+		formatString: \$#,0
+		displayFolder: 1. Chiffre d'affaires
+		lineageTag: d7c43b56-2a71-45ea-8c7f-93f6078b7fdf
+
+	/// Montant total des remises accordées.
+	measure Remises = [CA brut] - [CA net]
+		formatString: \$#,0
+		displayFolder: 1. Chiffre d'affaires
+		lineageTag: 4c3bb848-e983-4211-8ea8-a043b4ccee2f
+
+	/// Part du CA brut abandonnée en remises.
+	measure 'Taux de remise' = DIVIDE ( [Remises], [CA brut] )
+		formatString: 0.0 %
+		displayFolder: 1. Chiffre d'affaires
+		lineageTag: aaf69835-7264-4797-a3f2-f644bad1bca8
+
+	/// Nombre d'unités vendues.
+	measure 'Quantité vendue' = SUM ( Ventes[Quantité] )
+		formatString: #,0
+		displayFolder: 1. Chiffre d'affaires
+		lineageTag: 6b7f8b86-e67f-4d0e-b609-20568f21d0ad
+
+	/// CA net moyen par unité vendue. Reflète le prix et le mix produit.
+	measure 'Prix moyen par unité' = DIVIDE ( [CA net], [Quantité vendue] )
+		formatString: \$#,0
+		displayFolder: 1. Chiffre d'affaires
+		lineageTag: f4b90702-cebd-4d0b-9823-47f5d6982457
+
+	/// Coût d'achat des produits vendus.
+	measure 'Coût des ventes' = SUMX ( Ventes, Ventes[Quantité] * Ventes[Coût unitaire] )
+		formatString: \$#,0
+		displayFolder: 2. Rentabilité
+		lineageTag: 314b2e11-5283-485a-a33f-58f1ad5096df
+
+	/// CA net moins le coût des ventes.
+	measure 'Marge brute' = [CA net] - [Coût des ventes]
+		formatString: \$#,0
+		displayFolder: 2. Rentabilité
+		lineageTag: 3082fd76-3d18-4d5c-bf47-c4c48f80059a
+
+	/// Marge brute rapportée au CA net.
+	measure 'Taux de marge' = DIVIDE ( [Marge brute], [CA net] )
+		formatString: 0.0 %
+		displayFolder: 2. Rentabilité
+		lineageTag: 1c545b8e-6153-40ca-bbe6-3cb03dd37477
+
+	/// Nombre de commandes distinctes.
+	measure Commandes = DISTINCTCOUNT ( Ventes[OrderKey] )
+		formatString: #,0
+		displayFolder: 3. Commandes et clients
+		lineageTag: 425a83a5-1a00-4847-b23e-8e7daf23dd9d
+
+	/// CA net moyen par commande.
+	measure 'Panier moyen' = DIVIDE ( [CA net], [Commandes] )
+		formatString: \$#,0
+		displayFolder: 3. Commandes et clients
+		lineageTag: 31eefef3-8f22-4796-a447-2446391c86c8
+
+	/// Clients ayant passé au moins une commande sur la période.
+	measure 'Clients actifs' = DISTINCTCOUNT ( Ventes[CustomerKey] )
+		formatString: #,0
+		displayFolder: 3. Commandes et clients
+		lineageTag: 5ffc2767-89f5-488a-9869-ddd6f7c8a11c
+
+	/// Clients actifs dont la toute première commande (tous canaux et pays confondus) a lieu dans la période.
+	measure 'Nouveaux clients' =
+			VAR DebutPeriode = MIN ( Calendrier[Date] )
+			VAR ClientsDeLaPeriode =
+			    ADDCOLUMNS (
+			        VALUES ( Ventes[CustomerKey] ),
+			        "@PremiereCommande",
+			            CALCULATE ( MIN ( Ventes[Date de commande] ), ALLEXCEPT ( Ventes, Ventes[CustomerKey] ) )
+			    )
+			RETURN
+			    COUNTROWS ( FILTER ( ClientsDeLaPeriode, [@PremiereCommande] >= DebutPeriode ) )
+		formatString: #,0
+		displayFolder: 3. Commandes et clients
+		lineageTag: 2bfdc008-fde9-4054-a0a4-92d56e03c4b3
+
+	/// Clients actifs ayant déjà commandé avant la période.
+	measure 'Clients fidèles' = [Clients actifs] - [Nouveaux clients]
+		formatString: #,0
+		displayFolder: 3. Commandes et clients
+		lineageTag: 06a32112-e9cd-44da-a432-0be07ad8a316
+
+	/// Part des clients actifs qui commandent pour la première fois.
+	measure 'Part de nouveaux clients' = DIVIDE ( [Nouveaux clients], [Clients actifs] )
+		formatString: 0.0 %
+		displayFolder: 3. Commandes et clients
+		lineageTag: 2955395f-e0ed-410b-8718-6b7f470add5a
+
+	/// CA net réalisé par la boutique en ligne.
+	measure 'CA net en ligne' = CALCULATE ( [CA net], KEEPFILTERS ( Magasins[Canal] = "En ligne" ) )
+		formatString: \$#,0
+		displayFolder: 4. Canaux
+		lineageTag: 120955dc-5645-4f33-94a1-7ee2681ba7ae
+
+	/// Part du CA net réalisée en ligne.
+	measure 'Part du CA en ligne' = DIVIDE ( [CA net en ligne], [CA net] )
+		formatString: 0.0 %
+		displayFolder: 4. Canaux
+		lineageTag: 0bb44f1b-6e17-463b-a668-f16412bd214b
+
+	/// Nombre moyen de jours entre la commande et la livraison, par commande en ligne.
+	measure 'Délai moyen de livraison (jours)' =
+			VAR CommandesEnLigne =
+			    CALCULATETABLE ( VALUES ( Ventes[OrderKey] ), KEEPFILTERS ( Magasins[Canal] = "En ligne" ) )
+			RETURN
+			    AVERAGEX ( CommandesEnLigne, CALCULATE ( MAX ( Ventes[Délai de livraison (jours)] ) ) )
+		formatString: 0.0
+		displayFolder: 4. Canaux
+		lineageTag: 5f10b1de-0ba8-4be3-a2d0-c11e9170eb04
+
+	/// CA net sur la même période de l'année précédente.
+	measure 'CA net N-1' = CALCULATE ( [CA net], SAMEPERIODLASTYEAR ( Calendrier[Date] ) )
+		formatString: \$#,0
+		displayFolder: 5. Évolution N-1
+		lineageTag: 73fd8d9c-aff5-4e09-9e17-05bd3b95665a
+
+	/// Variation de CA net par rapport à l'année précédente (affichée quand une seule année est sélectionnée).
+	measure 'Évolution CA net' =
+			IF (
+			    HASONEVALUE ( Calendrier[Année] ),
+			    DIVIDE ( [CA net] - [CA net N-1], [CA net N-1] )
+			)
+		formatString: +0.0 %;-0.0 %;0.0 %
+		displayFolder: 5. Évolution N-1
+		lineageTag: 162b9b05-5380-4133-bc4b-f86bd7643f80
+
+	/// Marge brute sur la même période de l'année précédente.
+	measure 'Marge brute N-1' = CALCULATE ( [Marge brute], SAMEPERIODLASTYEAR ( Calendrier[Date] ) )
+		formatString: \$#,0
+		displayFolder: 5. Évolution N-1
+		lineageTag: 7777c964-1ed2-4628-ab37-d984c2a08f97
+
+	/// Variation de marge brute par rapport à l'année précédente (affichée quand une seule année est sélectionnée).
+	measure 'Évolution marge brute' =
+			IF (
+			    HASONEVALUE ( Calendrier[Année] ),
+			    DIVIDE ( [Marge brute] - [Marge brute N-1], [Marge brute N-1] )
+			)
+		formatString: +0.0 %;-0.0 %;0.0 %
+		displayFolder: 5. Évolution N-1
+		lineageTag: 13f1e15c-e1d4-4a77-8e9c-b81136dd9bbe
+
+	/// Commandes sur la même période de l'année précédente.
+	measure 'Commandes N-1' = CALCULATE ( [Commandes], SAMEPERIODLASTYEAR ( Calendrier[Date] ) )
+		formatString: #,0
+		displayFolder: 5. Évolution N-1
+		lineageTag: ccde184d-e38b-4f47-8ab3-0d29e3589b6e
+
+	/// Variation de commandes par rapport à l'année précédente (affichée quand une seule année est sélectionnée).
+	measure 'Évolution commandes' =
+			IF (
+			    HASONEVALUE ( Calendrier[Année] ),
+			    DIVIDE ( [Commandes] - [Commandes N-1], [Commandes N-1] )
+			)
+		formatString: +0.0 %;-0.0 %;0.0 %
+		displayFolder: 5. Évolution N-1
+		lineageTag: e09705a3-8b25-4d25-933f-4ce4b6e46e64
+
+	/// Panier moyen sur la même période de l'année précédente.
+	measure 'Panier moyen N-1' = CALCULATE ( [Panier moyen], SAMEPERIODLASTYEAR ( Calendrier[Date] ) )
+		formatString: \$#,0
+		displayFolder: 5. Évolution N-1
+		lineageTag: 4addd64d-c4aa-47de-bccc-75bc34b7a4ee
+
+	/// Variation de panier moyen par rapport à l'année précédente (affichée quand une seule année est sélectionnée).
+	measure 'Évolution panier moyen' =
+			IF (
+			    HASONEVALUE ( Calendrier[Année] ),
+			    DIVIDE ( [Panier moyen] - [Panier moyen N-1], [Panier moyen N-1] )
+			)
+		formatString: +0.0 %;-0.0 %;0.0 %
+		displayFolder: 5. Évolution N-1
+		lineageTag: e255c1be-3d3b-44da-8357-16466daf4a4a
+
+	/// Clients actifs sur la même période de l'année précédente.
+	measure 'Clients actifs N-1' = CALCULATE ( [Clients actifs], SAMEPERIODLASTYEAR ( Calendrier[Date] ) )
+		formatString: #,0
+		displayFolder: 5. Évolution N-1
+		lineageTag: 869bce81-cd8d-444f-b26f-c31fa1ffaca1
+
+	/// Variation de clients actifs par rapport à l'année précédente (affichée quand une seule année est sélectionnée).
+	measure 'Évolution clients actifs' =
+			IF (
+			    HASONEVALUE ( Calendrier[Année] ),
+			    DIVIDE ( [Clients actifs] - [Clients actifs N-1], [Clients actifs N-1] )
+			)
+		formatString: +0.0 %;-0.0 %;0.0 %
+		displayFolder: 5. Évolution N-1
+		lineageTag: 34818e31-b0e5-4e14-a3df-bc094443ab2b
+
+	/// Nouveaux clients sur la même période de l'année précédente.
+	measure 'Nouveaux clients N-1' = CALCULATE ( [Nouveaux clients], SAMEPERIODLASTYEAR ( Calendrier[Date] ) )
+		formatString: #,0
+		displayFolder: 5. Évolution N-1
+		lineageTag: cfe2ec3a-d615-497c-be70-35da8eb61e6a
+
+	/// Variation de nouveaux clients par rapport à l'année précédente (affichée quand une seule année est sélectionnée).
+	measure 'Évolution nouveaux clients' =
+			IF (
+			    HASONEVALUE ( Calendrier[Année] ),
+			    DIVIDE ( [Nouveaux clients] - [Nouveaux clients N-1], [Nouveaux clients N-1] )
+			)
+		formatString: +0.0 %;-0.0 %;0.0 %
+		displayFolder: 5. Évolution N-1
+		lineageTag: c89d5dec-d253-4ce1-89e6-418ec9cbb774
+
+	column Mesures
+		dataType: string
+		isHidden
+		lineageTag: 10e2826d-cbb0-4602-9768-251e87640766
+		summarizeBy: none
+		sourceColumn: Mesures
+
+		annotation SummarizationSetBy = User
+
+	partition Mesures = m
+		mode: import
+		source =
+				let
+				    // Table vide servant uniquement à regrouper les mesures
+				    Source = #table(type table [Mesures = text], {})
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
