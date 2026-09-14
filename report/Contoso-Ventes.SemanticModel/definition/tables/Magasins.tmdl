@@ -1,114 +1,105 @@
 table Magasins
-	lineageTag: 641e0ff5-8ebf-4a29-8b38-f5b3e4d0ecbf
+	lineageTag: 0f07807f-0485-426b-9631-cd4b67723202
 
 	column StoreKey
 		dataType: int64
+		isHidden
 		formatString: 0
-		lineageTag: 156c55fd-0b2a-40b5-bcf2-da18df3cdfbc
+		lineageTag: 71cf961f-5054-4efa-9102-b293fbd059c6
 		summarizeBy: none
 		sourceColumn: StoreKey
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
-	column StoreCode
-		dataType: int64
-		formatString: 0
-		lineageTag: 0361d7dc-4a07-4461-8116-1238a0380562
-		summarizeBy: count
-		sourceColumn: StoreCode
-
-		annotation SummarizationSetBy = Automatic
-
-	column GeoAreaKey
-		dataType: int64
-		formatString: 0
-		lineageTag: a05d4c4d-5ca3-4ee3-a323-d76622395fa8
-		summarizeBy: count
-		sourceColumn: GeoAreaKey
-
-		annotation SummarizationSetBy = Automatic
-
-	column CountryCode
+	column Magasin
 		dataType: string
-		lineageTag: 8df3287a-cee5-423f-9a9c-f58a22129cab
+		lineageTag: e865e578-4169-4da8-a3f2-98774cb0d9dd
 		summarizeBy: none
-		sourceColumn: CountryCode
+		sourceColumn: Magasin
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
-	column CountryName
+	column Canal
 		dataType: string
-		lineageTag: 4c9f6869-ebde-47be-9755-e8fe8900f2c4
+		lineageTag: d882a987-f17e-4ad9-baf8-92e84fd9c85b
 		summarizeBy: none
-		sourceColumn: CountryName
+		sourceColumn: Canal
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
-	column State
+	column 'Pays du magasin'
 		dataType: string
-		lineageTag: f2f452b8-efe1-4fc1-9c4c-b4b01afa1e4f
+		lineageTag: 0cbba56a-a645-4a16-ad09-37192f897d45
 		summarizeBy: none
-		sourceColumn: State
+		sourceColumn: Pays du magasin
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
-	column OpenDate
+	column 'Région du magasin'
+		dataType: string
+		lineageTag: 01db3c5a-fe99-49d5-9c0d-d7ea6e89d6d5
+		summarizeBy: none
+		sourceColumn: Région du magasin
+
+		annotation SummarizationSetBy = User
+
+	column 'Date d''ouverture'
 		dataType: dateTime
-		formatString: Long Date
-		lineageTag: 89190ddf-9b66-496c-9ce0-88b6f8c39d14
+		formatString: dd/mm/yyyy
+		lineageTag: f4b44a96-1c64-40c8-9b32-c4da2481d2d4
 		summarizeBy: none
-		sourceColumn: OpenDate
+		sourceColumn: Date d'ouverture
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation UnderlyingDateTimeDataType = Date
 
-	column CloseDate
+	column 'Date de fermeture'
 		dataType: dateTime
-		formatString: Long Date
-		lineageTag: 4be6eb22-e689-4023-9c94-68071297f3b0
+		formatString: dd/mm/yyyy
+		lineageTag: dddfefac-056d-491d-a632-990deae09240
 		summarizeBy: none
-		sourceColumn: CloseDate
+		sourceColumn: Date de fermeture
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation UnderlyingDateTimeDataType = Date
 
-	column Description
-		dataType: string
-		lineageTag: 699c3090-c3d5-4a61-a608-131666ab52bf
-		summarizeBy: none
-		sourceColumn: Description
-
-		annotation SummarizationSetBy = Automatic
-
-	column SquareMeters
+	column 'Surface (m²)'
 		dataType: int64
-		formatString: 0
-		lineageTag: 79596b8a-c7da-4775-ae55-cffa9acd3ec0
-		summarizeBy: sum
-		sourceColumn: SquareMeters
-
-		annotation SummarizationSetBy = Automatic
-
-	column Status
-		dataType: string
-		lineageTag: 12ca2d13-91f1-4157-a82e-d03262cb21e8
+		formatString: #,0
+		lineageTag: 4c522343-6905-4500-9f91-5767e53a24f2
 		summarizeBy: none
-		sourceColumn: Status
+		sourceColumn: Surface (m²)
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
+
+	column Statut
+		dataType: string
+		lineageTag: d686ce5f-f5d7-4a6f-bb5d-2e75ca71f666
+		summarizeBy: none
+		sourceColumn: Statut
+
+		annotation SummarizationSetBy = User
 
 	partition Magasins = m
 		mode: import
 		source =
 				let
-				  Source = Csv.Document(File.Contents(CheminDonnees & "store.csv"), [Delimiter = ",", Columns = 11, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
-				  #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				  #"Type de colonne changé" = Table.TransformColumnTypes(#"En-têtes promus", {{"StoreKey", Int64.Type}, {"StoreCode", Int64.Type}, {"GeoAreaKey", Int64.Type}, {"CountryCode", type text}, {"CountryName", type text}, {"State", type text}, {"OpenDate", type date}, {"CloseDate", type date}, {"Description", type text}, {"SquareMeters", Int64.Type}, {"Status", type text}}, "fr"),
-				    #"Type modifié" = Table.TransformColumnTypes(#"Type de colonne changé",{{"StoreKey", Int64.Type}, {"StoreCode", Int64.Type}, {"GeoAreaKey", Int64.Type}, {"CountryCode", type text}, {"CountryName", type text}, {"State", type text}, {"OpenDate", type date}, {"CloseDate", type date}, {"Description", type text}, {"SquareMeters", Int64.Type}, {"Status", type text}})
+				    Source = Csv.Document(File.Contents(CheminDonnees & "store.csv"),[Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"StoreKey", Int64.Type}, {"StoreCode", Int64.Type}, {"GeoAreaKey", Int64.Type}, {"CountryCode", type text}, {"CountryName", type text}, {"State", type text}, {"OpenDate", type date}, {"CloseDate", type date}, {"Description", type text}, {"SquareMeters", Int64.Type}, {"Status", type text}}),
+				    #"Autres colonnes supprimées" = Table.SelectColumns(#"Type modifié",{"StoreKey", "CountryName", "State", "OpenDate", "CloseDate", "SquareMeters", "Status"}),
+				    #"Colonnes renommées" = Table.RenameColumns(#"Autres colonnes supprimées",{{"CountryName", "Pays du magasin"}, {"State", "Région du magasin"}, {"OpenDate", "Date d'ouverture"}, {"CloseDate", "Date de fermeture"}, {"SquareMeters", "Surface (m²)"}, {"Status", "Statut"}}),
+				    #"Statut fermé" = Table.ReplaceValue(#"Colonnes renommées","Closed","Fermé",Replacer.ReplaceValue,{"Statut"}),
+				    #"Statut restructuré" = Table.ReplaceValue(#"Statut fermé","Restructured","Restructuré",Replacer.ReplaceValue,{"Statut"}),
+				    #"Statut ouvert" = Table.ReplaceValue(#"Statut restructuré","","Ouvert",Replacer.ReplaceValue,{"Statut"}),
+				    #"Online traduit" = Table.ReplaceValue(#"Statut ouvert","Online","En ligne",Replacer.ReplaceValue,{"Pays du magasin", "Région du magasin"}),
+				    #"Canal ajouté" = Table.AddColumn(#"Online traduit", "Canal", each if [StoreKey] = 999999 then "En ligne" else "Magasin physique", type text),
+				    // Plusieurs magasins restructurés partagent la même région : l'année d'ouverture rend le libellé unique
+				    #"Libellé magasin ajouté" = Table.AddColumn(#"Canal ajouté", "Magasin", each if [StoreKey] = 999999 then "Boutique en ligne" else [Région du magasin] & " (" & Text.From(Date.Year([#"Date d'ouverture"])) & ")", type text)
 				in
-				  #"Type modifié"
+				    #"Libellé magasin ajouté"
 
 	annotation PBI_NavigationStepName = Navigation
 

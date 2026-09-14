@@ -1,139 +1,132 @@
 table Ventes
-	lineageTag: 272e0ee5-ee5e-41f4-bd30-a6562cfd7e04
+	lineageTag: 03f6a82c-4388-4d1c-b39e-6ca7c857fb97
 
 	column OrderKey
 		dataType: int64
+		isHidden
 		formatString: 0
-		lineageTag: f9792200-cab9-4d65-963f-92692500413b
-		summarizeBy: count
+		lineageTag: 2eed229b-9613-4b48-a7c4-ef61b24e0729
+		summarizeBy: none
 		sourceColumn: OrderKey
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
-	column LineNumber
-		dataType: int64
-		formatString: 0
-		lineageTag: 5c54a8a5-cde2-4620-9f04-c169158f2ae0
-		summarizeBy: sum
-		sourceColumn: LineNumber
-
-		annotation SummarizationSetBy = Automatic
-
-	column OrderDate
+	column 'Date de commande'
 		dataType: dateTime
-		formatString: Long Date
-		lineageTag: 4a356b4b-602a-44a7-90ec-45063def857f
+		isHidden
+		formatString: dd/mm/yyyy
+		lineageTag: ba8b7045-5a63-4056-ac34-219ed7512412
 		summarizeBy: none
-		sourceColumn: OrderDate
+		sourceColumn: Date de commande
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation UnderlyingDateTimeDataType = Date
 
-	column DeliveryDate
+	column 'Date de livraison'
 		dataType: dateTime
-		formatString: Long Date
-		lineageTag: 90b36d70-1b0c-45e5-bf2a-1ac812aa6966
+		isHidden
+		formatString: dd/mm/yyyy
+		lineageTag: cd0dbcc9-8069-42ae-a497-eefd376a844b
 		summarizeBy: none
-		sourceColumn: DeliveryDate
+		sourceColumn: Date de livraison
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation UnderlyingDateTimeDataType = Date
 
 	column CustomerKey
 		dataType: int64
+		isHidden
 		formatString: 0
-		lineageTag: 5f1e1a3e-0098-497b-8822-8eff85b0372f
+		lineageTag: 68061b1b-d556-48ed-9566-6e51e8a7383c
 		summarizeBy: none
 		sourceColumn: CustomerKey
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column StoreKey
 		dataType: int64
+		isHidden
 		formatString: 0
-		lineageTag: 6b4d0325-fda9-4ed2-9cf7-1164e6eeffe2
+		lineageTag: 8e8d93fb-f2be-43b9-bf81-86ce234962ca
 		summarizeBy: none
 		sourceColumn: StoreKey
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column ProductKey
 		dataType: int64
+		isHidden
 		formatString: 0
-		lineageTag: edfa946c-d9de-4c58-b034-b0bc4a25f28c
+		lineageTag: 2c37ba30-feee-40b1-8f10-ea7d537373cd
 		summarizeBy: none
 		sourceColumn: ProductKey
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
-	column Quantity
+	column Quantité
 		dataType: int64
-		formatString: 0
-		lineageTag: fab6debb-be6a-4de4-a1df-1b5f99b1a4f7
-		summarizeBy: sum
-		sourceColumn: Quantity
-
-		annotation SummarizationSetBy = Automatic
-
-	column UnitPrice
-		dataType: double
-		lineageTag: a1c60021-b210-4c0b-9af0-559cc9cc8318
-		summarizeBy: sum
-		sourceColumn: UnitPrice
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	column NetPrice
-		dataType: double
-		lineageTag: 50e7ac28-2e6f-4c77-b6c8-34d731c60611
-		summarizeBy: sum
-		sourceColumn: NetPrice
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	column UnitCost
-		dataType: double
-		lineageTag: 07602663-2699-42dd-a824-880931bf9b8f
-		summarizeBy: sum
-		sourceColumn: UnitCost
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	column CurrencyCode
-		dataType: string
-		lineageTag: 9849c3fa-aae8-468f-8616-790f1d060593
+		isHidden
+		formatString: #,0
+		lineageTag: 4f2cb9a9-e6d2-4f08-8a68-347ec47106f1
 		summarizeBy: none
-		sourceColumn: CurrencyCode
+		sourceColumn: Quantité
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
-	column ExchangeRate
+	column 'Prix unitaire'
 		dataType: double
-		lineageTag: e73cae16-dc5b-43e2-a6dd-e4bad41cde80
-		summarizeBy: sum
-		sourceColumn: ExchangeRate
+		isHidden
+		formatString: \$#,0.00
+		lineageTag: 4f31c552-d371-46de-ba90-0c70bc866254
+		summarizeBy: none
+		sourceColumn: Prix unitaire
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+	column 'Prix net'
+		dataType: double
+		isHidden
+		formatString: \$#,0.00
+		lineageTag: eebd3a50-a795-4c69-b154-97a5c461f9e1
+		summarizeBy: none
+		sourceColumn: Prix net
+
+		annotation SummarizationSetBy = User
+
+	column 'Délai de livraison (jours)'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7cd95896-de41-4d35-9891-b5614bf77e29
+		summarizeBy: none
+		sourceColumn: Délai de livraison (jours)
+
+		annotation SummarizationSetBy = User
+
+	column 'Coût unitaire'
+		dataType: double
+		isHidden
+		formatString: \$#,0.00
+		lineageTag: e401b06e-c394-4d29-94b9-2773c80a5d50
+		summarizeBy: none
+		sourceColumn: Coût unitaire
+
+		annotation SummarizationSetBy = User
 
 	partition Ventes = m
 		mode: import
 		source =
 				let
-				  Source = Csv.Document(File.Contents(CheminDonnees & "sales.csv"),[Delimiter=",", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.None]),
-				  #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
-				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"OrderKey", Int64.Type}, {"LineNumber", Int64.Type}, {"OrderDate", type date}, {"DeliveryDate", type date}, {"CustomerKey", Int64.Type}, {"StoreKey", Int64.Type}, {"ProductKey", Int64.Type}, {"Quantity", Int64.Type}, {"UnitPrice", type number}, {"NetPrice", type number}, {"UnitCost", type number}, {"CurrencyCode", type text}, {"ExchangeRate", type number}})
+				    Source = Csv.Document(File.Contents(CheminDonnees & "sales.csv"),[Delimiter=",", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"En-têtes promus" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Type modifié" = Table.TransformColumnTypes(#"En-têtes promus",{{"OrderKey", Int64.Type}, {"LineNumber", Int64.Type}, {"OrderDate", type date}, {"DeliveryDate", type date}, {"CustomerKey", Int64.Type}, {"StoreKey", Int64.Type}, {"ProductKey", Int64.Type}, {"Quantity", Int64.Type}, {"UnitPrice", type number}, {"NetPrice", type number}, {"UnitCost", type number}, {"CurrencyCode", type text}, {"ExchangeRate", type number}}),
+				    #"Autres colonnes supprimées" = Table.SelectColumns(#"Type modifié",{"OrderKey", "OrderDate", "DeliveryDate", "CustomerKey", "StoreKey", "ProductKey", "Quantity", "UnitPrice", "NetPrice", "UnitCost"}),
+				    #"Colonnes renommées" = Table.RenameColumns(#"Autres colonnes supprimées",{{"OrderDate", "Date de commande"}, {"DeliveryDate", "Date de livraison"}, {"Quantity", "Quantité"}, {"UnitPrice", "Prix unitaire"}, {"NetPrice", "Prix net"}, {"UnitCost", "Coût unitaire"}}),
+				    #"Personnalisée ajoutée" = Table.AddColumn(#"Colonnes renommées", "Délai de livraison (jours)", each Duration.Days([Date de livraison] - [Date de commande]), Int64.Type)
 				in
-				    #"Type modifié"
+				    #"Personnalisée ajoutée"
 
 	annotation PBI_NavigationStepName = Navigation
 

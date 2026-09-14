@@ -1,12 +1,16 @@
-relationship AutoDetected_8da9cc5b-e879-4ec2-9c27-fa24db0e2a4a
-	fromColumn: Ventes.CustomerKey
-	toColumn: Clients.CustomerKey
+relationship 64333e8c-4b64-4d04-9615-ebdaa0ea7cd1
+	fromColumn: Ventes.'Date de commande'
+	toColumn: Calendrier.Date
 
-relationship AutoDetected_199af03e-e7be-4fdc-9e91-d654e4f0e61c
+relationship d3baeadf-4eeb-4aa3-9aa7-372115d9bc7a
+	fromColumn: Ventes.ProductKey
+	toColumn: Produits.ProductKey
+
+relationship ba8c18de-937f-42fa-b76a-cf4b4b0fdf50
 	fromColumn: Ventes.StoreKey
 	toColumn: Magasins.StoreKey
 
-relationship AutoDetected_a2483217-3cd7-4dba-9bcd-1f14f55068ba
-	fromColumn: Ventes.ProductKey
-	toColumn: Produits.ProductKey
+relationship 0a3beffe-8048-4dd9-ab1a-0c0748706cb9
+	fromColumn: Ventes.CustomerKey
+	toColumn: Clients.CustomerKey
 
