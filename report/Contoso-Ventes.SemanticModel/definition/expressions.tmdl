@@ -1,0 +1,7 @@
+expression CheminDonnees = "D:\PROJET PERSO\DATA\BI Dashboard (Power BI )\contoso-sales-powerbi\data\raw\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 19ed8d5c-7520-4fbd-bf22-97e4c924a0c5
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

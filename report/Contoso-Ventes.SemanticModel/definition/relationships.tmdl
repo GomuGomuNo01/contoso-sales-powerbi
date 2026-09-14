@@ -1,0 +1,12 @@
+relationship AutoDetected_8da9cc5b-e879-4ec2-9c27-fa24db0e2a4a
+	fromColumn: Ventes.CustomerKey
+	toColumn: Clients.CustomerKey
+
+relationship AutoDetected_199af03e-e7be-4fdc-9e91-d654e4f0e61c
+	fromColumn: Ventes.StoreKey
+	toColumn: Magasins.StoreKey
+
+relationship AutoDetected_a2483217-3cd7-4dba-9bcd-1f14f55068ba
+	fromColumn: Ventes.ProductKey
+	toColumn: Produits.ProductKey
+
