@@ -1,0 +1,9 @@
+# Données brutes : volumineuses et téléchargeables depuis la source (voir data/README.md)
+data/raw/
+
+# Fichiers locaux générés par Power BI Desktop (projet .pbip)
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# IDE
+.idea/
