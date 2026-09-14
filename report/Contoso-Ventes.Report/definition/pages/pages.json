@@ -1,7 +1,10 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
   "pageOrder": [
-    "2cb74e5b250ee56cc6ac"
+    "synthese",
+    "canaux_pays",
+    "produits",
+    "clients"
   ],
-  "activePageName": "2cb74e5b250ee56cc6ac"
+  "activePageName": "synthese"
 }

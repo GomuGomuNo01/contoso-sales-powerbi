@@ -1,0 +1,99 @@
+{
+  "name": "Contoso Analyse",
+  "dataColors": [
+    "#0F9D8A",
+    "#1B2A41",
+    "#E4572E",
+    "#F2B134",
+    "#3B82C4",
+    "#7B61A8",
+    "#5BB381",
+    "#A0AEC0"
+  ],
+  "foreground": "#1B2A41",
+  "foregroundNeutralSecondary": "#6B7A90",
+  "background": "#FFFFFF",
+  "tableAccent": "#0F9D8A",
+  "good": "#2E9E6B",
+  "bad": "#E4572E",
+  "neutral": "#F2B134",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#1B2A41"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#6B7A90"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 22,
+      "color": "#1B2A41"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#E2E8F0"
+              }
+            },
+            "radius": 8
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false
+          }
+        ],
+        "subTitle": [
+          {
+            "show": false
+          }
+        ],
+        "title": [
+          {
+            "fontSize": 11,
+            "fontColor": {
+              "solid": {
+                "color": "#1B2A41"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F4F6FA"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}
