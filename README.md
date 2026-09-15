@@ -8,6 +8,10 @@
 
 Projet d'analyse de données de bout en bout : à partir de fichiers CSV bruts, construction d'un rapport Power BI qui explique **pourquoi le chiffre d'affaires de Contoso a reculé de 33 % entre 2023 et 2025** et propose des pistes d'action.
 
+[![Télécharger le rapport](https://img.shields.io/badge/T%C3%A9l%C3%A9charger%20le%20rapport-.pbix%20avec%20donn%C3%A9es-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://github.com/GomuGomuNo01/contoso-sales-powerbi/releases/latest/download/Contoso-Ventes.pbix)
+
+*Fichier unique, données incluses, s'ouvre directement dans Power BI Desktop sans aucune configuration. Toutes les versions sont disponibles sur la [page des releases](https://github.com/GomuGomuNo01/contoso-sales-powerbi/releases).*
+
 ![Page de synthèse du rapport](docs/captures/01-synthese.png)
 
 ---
@@ -217,6 +221,8 @@ Le script [`scripts/verifier_kpis.py`](scripts/verifier_kpis.py) vérifie l'int�
 
 ## 9. Le rapport Power BI
 
+📥 **[Télécharger le rapport (`Contoso-Ventes.pbix`, 6,9 Mo, données incluses)](https://github.com/GomuGomuNo01/contoso-sales-powerbi/releases/latest/download/Contoso-Ventes.pbix)** pour l'explorer dans Power BI Desktop.
+
 | Page | Contenu |
 |---|---|
 | ![Synthèse](docs/captures/01-synthese.png) | **Synthèse** : KPIs de l'année, CA net par année, répartition par canal, CA par pays et par catégorie |
@@ -328,7 +334,14 @@ contoso-sales-powerbi/
 
 ## 14. Reproduire le projet
 
-**Prérequis :** Windows et [Power BI Desktop](https://aka.ms/pbidesktopstore) (gratuit).
+**Prérequis :** Windows et [Power BI Desktop](https://aka.ms/pbidesktopstore) (gratuit), version d'août 2026 (2.157) ou plus récente recommandée.
+
+**Option 1 : ouvrir le rapport directement (recommandé)**
+
+1. Télécharger [`Contoso-Ventes.pbix`](https://github.com/GomuGomuNo01/contoso-sales-powerbi/releases/latest/download/Contoso-Ventes.pbix) depuis la dernière release.
+2. L'ouvrir dans Power BI Desktop : les données sont déjà chargées, aucune configuration n'est nécessaire.
+
+**Option 2 : reconstruire le rapport à partir des données sources**
 
 1. Cloner le dépôt.
 2. Télécharger `csv-100k.7z` depuis la [release SQLBI](https://github.com/sql-bi/Contoso-Data-Generator-V2-Data/releases/tag/ready-to-use-data) et l'extraire dans `data/raw/`.

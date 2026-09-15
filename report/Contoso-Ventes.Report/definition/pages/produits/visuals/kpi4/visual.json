@@ -106,23 +106,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "6953fda18506bc2d5795",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Mesures"
-              }
-            },
-            "Property": "Taux de marge"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }
