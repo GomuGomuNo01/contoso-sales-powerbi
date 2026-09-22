@@ -12,7 +12,9 @@ Projet d'analyse de données de bout en bout : à partir de fichiers CSV bruts, 
 
 *Fichier unique, données incluses, s'ouvre directement dans Power BI Desktop sans aucune configuration. Toutes les versions sont disponibles sur la [page des releases](https://github.com/GomuGomuNo01/contoso-sales-powerbi/releases).*
 
-![Page de synthèse du rapport](docs/captures/01-synthese.png)
+![Le rapport Power BI en action : filtrage croisé](docs/captures/demo-interactions.gif)
+
+*Le rapport en action : un clic sur la catégorie « Computers » recalcule instantanément tous les visuels de la page, puis un second clic rétablit la vue complète.*
 
 ---
 
@@ -222,6 +224,10 @@ Le script [`scripts/verifier_kpis.py`](scripts/verifier_kpis.py) vérifie l'int�
 ## 9. Le rapport Power BI
 
 📥 **[Télécharger le rapport (`Contoso-Ventes.pbix`, 6,9 Mo, données incluses)](https://github.com/GomuGomuNo01/contoso-sales-powerbi/releases/latest/download/Contoso-Ventes.pbix)** pour l'explorer dans Power BI Desktop.
+
+![Parcours des 4 pages du rapport](docs/captures/demo-pages.gif)
+
+*Parcours des 4 pages : Synthèse, Canaux et pays, Produits et rentabilité, Clients.*
 
 | Page | Contenu |
 |---|---|
