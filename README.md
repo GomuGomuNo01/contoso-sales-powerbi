@@ -9,8 +9,13 @@
 Projet d'analyse de données de bout en bout : à partir de fichiers CSV bruts, construction d'un rapport Power BI qui explique **pourquoi le chiffre d'affaires de Contoso a reculé de 33 % entre 2023 et 2025** et propose des pistes d'action.
 
 [![Télécharger le rapport](https://img.shields.io/badge/T%C3%A9l%C3%A9charger%20le%20rapport-.pbix%20avec%20donn%C3%A9es-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://github.com/GomuGomuNo01/contoso-sales-powerbi/releases/latest/download/Contoso-Ventes.pbix)
+[![Voir la présentation](https://img.shields.io/badge/Voir%20la%20pr%C3%A9sentation-vid%C3%A9o%20de%2040%20s-0F9D8A?style=for-the-badge)](https://gomugomuno01.github.io/contoso-sales-powerbi/presentation/)
 
-*Fichier unique, données incluses, s'ouvre directement dans Power BI Desktop sans aucune configuration. Toutes les versions sont disponibles sur la [page des releases](https://github.com/GomuGomuNo01/contoso-sales-powerbi/releases).*
+*Rapport : fichier unique, données incluses, qui s'ouvre directement dans Power BI Desktop sans aucune configuration ; toutes les versions sont disponibles sur la [page des releases](https://github.com/GomuGomuNo01/contoso-sales-powerbi/releases). Présentation : la Business Intelligence et ce projet en 40 secondes, sur une musique originale.*
+
+[![Présentation vidéo du projet Contoso Sales Analytics, 40 secondes](assets/video/presentation-poster.jpg)](https://gomugomuno01.github.io/contoso-sales-powerbi/presentation/)
+
+*La présentation vidéo (40 s, 1080p, avec le son) : cliquer sur l'image pour la regarder dans la page « Présentation » publiée sur GitHub Pages. Elle explique le principe de la Business Intelligence (collecter, comprendre, décider), pose la question de la direction, déroule la chaîne de traitement du fichier brut au tableau de bord, montre le rapport en action (filtrage croisé enregistré dans Power BI Desktop), puis présente les constats chiffrés et les avantages de la BI pour la décision. Elle a été animée image par image en Python, avec sa propre charte graphique ; sa musique a été synthétisée spécialement pour elle et calée sur chaque changement de scène, sans aucun droit à céder.*
 
 ![Le rapport Power BI en action : filtrage croisé](docs/captures/demo-interactions.gif)
 
@@ -144,6 +149,8 @@ Le détail des colonnes conservées, écartées et transformées figure dans le 
 | **Format PBIP (TMDL + PBIR)** | Projet enregistré en fichiers texte : modèle et mesures lisibles et versionnables dans Git |
 | **Python (pandas)** | Contrôles qualité et recalcul indépendant des KPIs pour valider le rapport |
 | **Git / GitHub** | Versionnage par étape sur une branche `dev` |
+| **Python (Pillow, numpy, scipy)** | Vidéo de présentation animée image par image et musique originale synthétisée |
+| **GitHub Pages et GitHub Actions** | Publication automatique de la page de présentation vidéo |
 | **Markdown** | Cahier des charges, dictionnaire de données, README |
 
 ## 7. Méthodologie
@@ -324,6 +331,9 @@ Ces recommandations restent à confirmer avec des données absentes du jeu actue
 contoso-sales-powerbi/
 ├── README.md
 ├── LICENSE
+├── .github/workflows/
+│   └── deploy-pages.yml              Publie la page de présentation vidéo sur GitHub Pages
+├── assets/video/                     Présentation vidéo (MP4), son affiche et sa page web
 ├── data/
 │   └── README.md                     Téléchargement des données (fichiers bruts non versionnés)
 ├── docs/
@@ -382,6 +392,6 @@ python scripts/verifier_kpis.py
 ## 16. Crédits
 
 - Données : [SQLBI, Contoso Data Generator V2](https://github.com/sql-bi/Contoso-Data-Generator-V2-Data) (licence MIT).
-- Licence du projet : [MIT](LICENSE).
+- Licence du projet : [MIT](LICENSE). La vidéo de présentation et sa musique ont été produites pour ce projet (animation Python, synthèse sonore) et relèvent de la même licence : aucun contenu tiers soumis à droits n'y est utilisé.
 
 **Auteur :** Dibie Elisee Jules Cedric KOUADIO ([@GomuGomuNo01](https://github.com/GomuGomuNo01))
